@@ -10,9 +10,12 @@ if (prompt == 'add') {
     addData(contentDescription);
 
 }else if (prompt == 'list') {
-    const desStat = argumen[4];
-    loadData()
-    filterData(argumen[3], desStat);
+    if(argumen[3]){
+        const desStat = argumen[4];
+        filterData(argumen[3], desStat);
+    }else {
+        loadData()
+    }
 }else if (prompt == 'update') {
     const idToBeUpdated = Number(argumen[3]);
     if (!idToBeUpdated) {

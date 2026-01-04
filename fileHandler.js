@@ -41,19 +41,47 @@ function loadData() {
 }
 
 function filterData(arg, stat){
+    const allData = readData(); //return array of task
     if (arg === '-s' || arg === '--status'){
-        const allData = readData();
-
         const desStat = stat;
         if (desStat === "done"){
             const doneTask = allData.filter(t => t.status === 'done');
-            console.table(doneTask);
+            console.log("ID   | Description                    | Status     | Created At               | Updated At ")
+            doneTask.forEach(d => {
+                const id = String(d.id).padEnd(4);
+                const desc = d.description.padEnd(30);
+                const status = d.status.padEnd(10);
+                const createdAt = d.createdAt.padEnd(10);
+                const updatedAt = d.updatedAt.padEnd(10);
+
+                console.log(`${id} | ${desc} | ${status} | ${createdAt} | ${updatedAt}`);
+            });
         }else if(desStat === 'on-progress') {
             const onProgTask = allData.filter(t => t.status === 'on-progress');
-            console.table(onProgTask);
-        }else{
+            console.log("ID   | Description                    | Status     | Created At               | Updated At ")
+            onProgTask.forEach(d => {
+                const id = String(d.id).padEnd(4);
+                const desc = d.description.padEnd(30);
+                const status = d.status.padEnd(10);
+                const createdAt = d.createdAt.padEnd(10);
+                const updatedAt = d.updatedAt.padEnd(10);
+
+                console.log(`${id} | ${desc} | ${status} | ${createdAt} | ${updatedAt}`);
+            });
+        }else if (desStat === 'todo'){
             const toDo = allData.filter(t => t.status === 'todo');
-            console.table(toDo)
+            console.log("ID   | Description                    | Status     | Created At               | Updated At ")
+            toDo.forEach(d => {
+                const id = String(d.id).padEnd(4);
+                const desc = d.description.padEnd(30);
+                const status = d.status.padEnd(10);
+                const createdAt = d.createdAt.padEnd(10);
+                const updatedAt = d.updatedAt.padEnd(10);
+
+                console.log(`${id} | ${desc} | ${status} | ${createdAt} | ${updatedAt}`);
+            });
+        }else {
+            console.log('Enter The Right Status [ todo | on-progress | done ]');
         }
     }
 }
