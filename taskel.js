@@ -1,12 +1,9 @@
-const { PassThrough } = require('stream');
+#!/usr/bin/env node
+
+
 const { loadData, filterData } = require('./fileHandler.js');
 const { addData, updateData, deleteData } = require('./taskService.js');
 const { program } = require('commander');
-
-const process = require('process'); //pake require karna type di package.json nya commonjs
-const argumen = process.argv;
-const prompt = argumen[2];
-
 
 
 //inisialisasi package commander.js
